@@ -1,0 +1,78 @@
+\documentclass{standalone}
+\usepackage{circuitikz}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+% =========== РУССКИЙ ЯЗЫК для XeLaTeX/LuaLaTeX ===========
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\begin{document}
+			\begin{circuitikz}
+				\tikzstyle{every node}=[font=\LARGE]
+				
+				% Параметры для эллипса
+				\def\a{2}
+				\def\b{2}
+				\def\ph{55} % в градусах (у вас в коде градусы)
+				\pgfmathsetmacro\cosPhi{cos(\ph)}
+				\pgfmathsetmacro\A{2*sqrt(1+\cosPhi)} % большая полуось
+				\pgfmathsetmacro\B{2*sqrt(1-\cosPhi)} % меньшая полуось
+				\pgfmathsetmacro\rotAngle{45} % угол поворота эллипса
+				
+				% Левый график
+				\draw [->, >=Stealth] (3.75,6.5) .. controls (3.75,9.75) and (3.75,9.75) .. (3.75,12.75) ;
+				\draw [->, >=Stealth] (1,9.5) -- (6.75,9.5);
+				\draw [dashed] (1.75,11.5) rectangle  (5.75,7.5);
+				
+				% Эллипс с вычисленными параметрами
+				\draw [rotate around={\rotAngle:(3.75,9.5)}, thick] (3.75,9.5) ellipse (\A cm and \B cm);
+				
+				\node [font=\small] at (4.1,12.75) {$y$};
+				\node [font=\small] at (6.5,9.75) {$x$};
+				\node [font=\small] at (1.5,9.75) {$E$};
+				\node [font=\small] at (1.5,11.75) {$A$};
+				\node [font=\small] at (4,11.75) {$F$};
+				\node [font=\small] at (3.95,10.95) {$d$};
+				\node [font=\small] at (6,11.75) {$B$};
+				\node [font=\small] at (6,9.75) {$G$};
+				\node [font=\small] at (6,7.25) {$C$};
+				\node [font=\small] at (4,7.25) {$H$};
+				\node [font=\small] at (1.5,7.25) {$D$};
+				\node [font=\small] at (4,9.75) {$O$};
+				\node [font=\small] at (9.2,12.75) {$y = OF \cos (\omega t - \varphi)$};
+				\node [font=\small] at (7.2,6) {$x = OG \cos (\omega t)$};
+				\node [font=\small] at (12.75,9.75) {$\omega t$};
+				\node [font=\small] at (4.15,0.25) {$\omega t$};
+				
+				% Правый график
+				\draw [->, >=Stealth] (7.5,6.5) -- (7.5,12.75);
+				\draw [->, >=Stealth] (7.25,9.5) -- (13,9.5);
+				\draw[domain=7.25:12.5,samples=100,smooth] plot (\x,{2*sin(1.7*\x r -4.3 r ) +9.5});
+				
+				% Пунктирные линии
+				\draw [dashed] (5.75,11.5) -- (12.5,11.5);
+				\draw [dashed] (5.75,7.5) -- (12.5,7.5);
+				\draw [dashed] (1.75,11.15) -- (12.5,11.15);
+				\draw [dashed] (1.75,7.873) -- (12.5,7.873);
+				
+				% Нижний график
+				\draw [->, >=Stealth] (1,5.75) -- (6.75,5.75);
+				\draw [->, >=Stealth] (3.75,6.25) -- (3.75,0);
+				\draw[domain=3.75:3.75,samples=100,smooth] plot (\x,{1.6*sin(16*\x r -4.75 r ) +5.75});
+				
+				\begin{scope}[rotate around={-90:(3.75,5.75)}]
+					\draw[domain=3.75:9,samples=100,smooth] plot (\x,{2*sin(1.6*\x r +1.8 r ) +5.75});
+				\end{scope}
+				
+				\draw [dashed] (1.75,7.5) -- (1.75,0.5);
+				\draw [dashed] (5.75,7.5) -- (5.75,0.5);
+				\draw [dashed] (5.375,11.5) -- (5.375,0.5);
+				\draw [dashed] (2.12,11.5) -- (2.12,0.5);
+%				\draw [dashed] (5.375,11.5) -- (5.375,0.5);
+%				\draw [dashed] (6.75,16.75) -- (6.75,16.75);
+				
+			\end{circuitikz}
+\end{document}
