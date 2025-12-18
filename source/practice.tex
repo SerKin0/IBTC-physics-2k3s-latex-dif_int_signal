@@ -128,22 +128,13 @@
 Можно сделать вывод, что меандр является самым стабильным сигналом для операций дифференцирования и интегрирования, так как нам не удалось добиться полного искажения выходного сигнала, в отличии от других примеров.
 
 \subsection{Разложение усечённой синусоиды в ряд Фурье}
-\[ w_0 = \frac{2\pi}{T} \qquad \tau = w_0t \qquad t \in [0, T] \to \tau \in [0, 2\pi] \]
+Ряд Фурье позволяет заменить данную периодическую функцию бесконечной суммой гармонических функций (синусов и косинусов), каждые и которых имеют свои амплитуды и частоты. Если принять, что период функции $f(x)$ лежит в интервале от $L$ до $-L$, то ряд выглядит следующим образом:
 \begin{align}
-	f(t) = \sum\limits_{k = -\infty}^{\infty} \dot{f_k} \cdot e^{jw_0tk} = \sum\limits_{k = -\infty}^{\infty} \dot{f_k} \cdot e^{j \tau k} \\
-	\dot f_k = \frac1{T} \int_{0}^{T} f(t) e^{-jw_0tk}dt = \frac1{2\pi} \int_{0}^{2\pi}f(\tau) e^{-j\tau k} d\tau
+	 f(x) = \frac{a_0}2 + \sum\limits_{n = 1}^{\infty}\big( a_n \cos \big(\frac{n\pi x}{L}\big) + b_n \sin \big(\frac{n\pi x}{L}\big) \big) \text{, где:}
 \end{align}
-Перейдём от суммы с пределами $[-\infty, \infty]$ к сумме с пределами $[0, \infty]$, для этого воспользуемся формулой Эйлера и запишем $\dot f_k$ в виде:
-\[ \dot f_k = \frac1{2\pi} \big[ \int_{0}^{2\pi} f(\tau) \cos(k\tau)d\tau - j\int_{0}^{2\pi} f(\tau) \sin (k\tau) d\tau \big] \]
-Введём обозначение:
-\[ c_k = \int_{0}^{2\pi} f(\tau) \cos(k\tau)d\tau \qquad d_k = \int_{0}^{2\pi} f(\tau) \sin (k\tau) d\tau \]
-Тогда:
-\[ \dot f_k = \frac1{2\pi}(c_k - jd_k) = a_k e^{j \phi_k}\]
-\[ \dot f_{-k} = \frac1{2\pi} (c_k + jd_k) = a_k e^{-j \phi_k}\]
-Разделим сумму:
-\begin{align}
-	f(t) =  \sum\limits_{k = -\infty}^{-1} \dot f_k e^{j\tau k} + \dot f_0 +  \sum\limits_{k = 1}^{\infty} \dot f_k e^{j\tau k} = \\
-	f_0 +  \sum\limits_{k = 1}^{\infty} a_k e^{j(\tau k + \phi_k)} + a_k e^{-j(\tau k + \phi_k)} = 
-	f_0 + 2  \sum\limits_{k = 1}^{\infty} a_k \cos(\tau k + \phi_k)
-\end{align}
-\[ f(\tau) = f_0 + 2  \sum\limits_{k = 1}^{\infty} a_k \cos(\tau k + \phi_k) \]
+
+\[ a_0 = \frac1{L} \int_{-L}^{L} f(x) dx \]
+\[ a_n = \frac1{L} \int_{-L}^{L} f(x) \cos \big(\frac{n\pi x}{L}\big) dx \]
+\[ b_n = \frac1{L} \int_{-L}^{L} f(x) \sin \big(\frac{n\pi x}{L}\big) dx \]
+
+По заданию будем считать, что существенными являются первые 7 гармоник спектра.
