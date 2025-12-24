@@ -97,7 +97,7 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{graph/charts/theory_charts_int_dif}
-	\caption{}
+	\caption{Ожидаемые результаты измерений}
 	\label{fig:pr:theory}
 \end{figure}
 
@@ -138,3 +138,17 @@
 \[ b_n = \frac1{L} \int_{-L}^{L} f(x) \sin \big(\frac{n\pi x}{L}\big) dx \]
 
 По заданию будем считать, что существенными являются первые 7 гармоник спектра.
+
+Составим уравнение для нахождения смещения синусоиды, чтобы получить функцию сигнала. Для этого введём следующие переменные: $c ~-$ константа, которой "обрезаем" \ сигнал, $\alpha~-$ искомое смещение синусоиды, $\epsilon = \arcsin(|c|)~-$ константа для удобства записи.
+\[ \int_{0}^{\pi + \epsilon} (\sin x + \alpha) dx + \int_{\pi + \epsilon}^{2\pi - \epsilon} (c + \alpha) dx + \int_{2\pi - \epsilon}^{2\pi} (\sin x + \alpha) dx = 0 \]
+Очевидно, что после интегрирования и преобразования, получим:
+\[ \alpha = c \big(\frac{\pi - 2\epsilon}{2 \pi}\big) \]
+
+Пусть в нашем случае $c = -1/5$. Отобразим результат графически (\cref{fig:pr:furie})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{graph/furie/furie.pdf}
+	\caption{График сигнала и его разложения в ряд Фурье}
+	\label{fig:pr:furie}
+\end{figure}
