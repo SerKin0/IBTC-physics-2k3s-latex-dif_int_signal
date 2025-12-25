@@ -154,6 +154,60 @@ u_{\text{вых}}(t) = \tau_0 \frac{d}{dt} e^{j\omega t} = \tau_0 j\omega e^{j\o
 
 В заключение отметим, что рассмотренные выше модели дифференцирующих и интегрирующих цепей практически являются элементами более сложных электронных устройств. Как правило, для этих цепей применяются операционные усилители с обратной связью (в качестве элементов обратной связи и используются $R$, $C$---цепочки). В этом случае удается сочетать приемлемый коэффициент передачи с достаточно высоким качеством преобразования.
 
+\subsubsection{Зависимость коэффициента передачи и аргумента от частоты}
+Для операции интегрирования комплексный коэффициент передачи $K$ представлен в формуле \cref{eq:th:9}, перепишем его в виде $a + bj$ (алгебраическая форма комплексного числа):
+\[ \dot K = \frac{jRCw (1 - jRCw)}{(1 + jRCw)(1 - jRCw)} = \frac{(RCw)^2 + jRCw}{1 + (RCw)^2} = \frac{(RCw)^2}{1 + (RCw)^w} + \frac{RCw}{1 + (RCw)^2}j \]
+Тогда модуль $|\dot K|$ будет равен:
+\[ |\dot K| = \frac{CRw}{(RCw)^2 + 1} \sqrt{(RCw)^2 + 1} = \frac{RCw}{\sqrt{(RCw)^2 + 1}} \]
+А аргумент $arg(\dot K)$:
+\[ arg(\dot K) = \arctan \big(\frac{b}{a}\big) = \arctan \big(\frac{1}{RCw}\big) \]
+Изобразим графически графики аргумента и модуля от частоты $w$
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{graph/charts/3.pdf}
+		\caption{}
+		\label{fig:th:K_int}
+	\end{subfigure}
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{graph/charts/4.pdf}
+		\caption{}
+		\label{fig:th:phi_int}
+	\end{subfigure}
+	\caption{Зависимость $|\dot K|$ и $arg(\dot K)$ для операции интегрирования}
+	\label{fig:th:int}
+\end{figure}
+
+Для операции дифференцирования комплексный коэффициент передачи $K$ представлен в формуле \cref{eq:th:10}, перепишем его в виде $a + bj$ (алгебраическая форма комплексного числа):
+\[ \dot K = \frac{1}{1 + j\omega CR} \frac{(1 - jRCw)}{(1 - jRCw)} = \frac1{1 + (RCw)^2} - \frac{RCw}{1 + (RCw)^2} \]
+Тогда модуль $|\dot K|$ будет равен:
+\[ |\dot K| = \frac{\sqrt{(RCw)^2 + 1}}{(RCw)^2 + 1} = \frac1{\sqrt{(RCw)^2 + 1}}\]
+А аргумент $arg(\dot K)$:
+\[ arg(\dot K) = \arctan \big(\frac{b}{a}\big) = \arctan(-RCw) \]
+Изобразим графически графики аргумента и модуля от частоты $w$:
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{graph/charts/1.pdf}
+		\caption{}
+		\label{fig:th:K_dif}
+	\end{subfigure}
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{graph/charts/2.pdf}
+		\caption{}
+		\label{fig:th:phi_dif}
+	\end{subfigure}
+	\caption{Зависимость $|\dot K|$ и $arg(\dot K)$ для операции дифференцирования}
+	\label{fig:th:dif}
+\end{figure}
+
+
 \subsection{Измерение разности фаз синусоидальных напряжений}
 
 Фазовые соотношения между напряжениями на отдельных элементах цепи можно измерить при помощи катодного осциллографа.
