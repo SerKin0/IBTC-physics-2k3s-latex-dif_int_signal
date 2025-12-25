@@ -65,7 +65,7 @@
 Для непериодических сигналов аналогичные соотношения имеют вид:
 \begin{align} \label{eq:th:5}
 	u(t) = \frac{1}{2 \pi} \int_{-\infty}^{\infty} S(j\omega) e^{j\omega t} \, d\omega, &&
-	S(j\omega) = \int_{-\infty}^\infty u(t) e^{-j\omega t} \, dt
+	\dot{S}(j\omega) = \int_{-\infty}^\infty u(t) e^{-j\omega t} \, dt
 \end{align}
 Множитель $S(j\omega) = S(\omega) e^{j \varphi(\omega)}$ называют \textit{спектральной плотностью}.
 
@@ -94,13 +94,13 @@
 
 Для четырехполюсников вводится также понятие коэффициента передачи --- комплексной функции вида
 \[
-K(j\omega) = \frac{\dot{U}_{\text{вых}}}{\dot{U}_{\text{вх}}} = K(\omega)e^{j\varphi(\omega)},
+\dot{K}(j\omega) = \frac{\dot{U}_{\text{вых}}}{\dot{U}_{\text{вх}}} = K(\omega)e^{j\varphi(\omega)},
 \]
 где $\dot{U}_{\text{вх}}$ и $\dot{U}_{\text{вых}}$ --- комплексные амплитуды входного и выходного напряжения. (Напомним, что для сигнала вида $U(t) = U_0 e^{j(\omega t + \varphi)}$ комплексная амплитуда записывается в виде $\dot{U} = U_0 e^{j\varphi}$). Модуль $K(\omega)$ называют амплитудной характеристикой четырехполюсника, а аргумент $\varphi(\omega)$ --- фазовой характеристикой.
 
 Каждая гармоника входного сигнала даст на выходе линейного четырехполюсника гармонический отклик той же частоты. Для его нахождения нужно эту гармонику умножить на коэффициент передачи четырехполюсника. Просуммировав отклики по всем гармоникам, можно определить выходной сигнал. В частности, для непериодических сигналов выражение для выходного сигнала запишется в интегральной форме:
 \begin{equation} \label{eq:th:6}
-	U_{\text{вых}}(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} S(j\omega)K(j\omega)e^{j\omega t}d\omega,
+	U_{\text{вых}}(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \dot{S}(j\omega)K(j\omega)e^{j\omega t}d\omega,
 \end{equation}
 где $S(j\omega)$ --- спектральная плотность входного сигнала.
 
@@ -111,7 +111,7 @@ K(j\omega) = \frac{\dot{U}_{\text{вых}}}{\dot{U}_{\text{вх}}} = K(\omega)e^
 
 Из последнего равенства видно, что коэффициент передачи дифференцирующего четырехполюсника
 \begin{equation} \label{eq:th:7}
-	K(j\omega) = \tau_0 j\omega = \tau_0 \omega e^{\frac{j\pi}{2}}.
+	\dot{K}(j\omega) = \tau_0 j\omega = \tau_0 \omega e^{\frac{j\pi}{2}}.
 \end{equation}
 
 Например, при дифференцировании гармонического напряжения типа $e^{j\omega t}$ выражение для выходного сигнала имеет вид:
@@ -128,11 +128,11 @@ u_{\text{вых}}(t) = \tau_0 \frac{d}{dt} e^{j\omega t} = \tau_0 j\omega e^{j\o
 
 Показанные на рис. \ref{fig:1a}, \ref{fig:1b} четырехполюсники имеют коэффициенты передачи
 \begin{equation} \label{eq:th:9}
-	K(j\omega) = \frac{R}{R + \frac{1}{j\omega C}} = RC  \frac{j\omega}{1 + RC j\omega} = \frac{\tau_0 j\omega}{1 + \tau_0 j\omega}.
+	\dot{K}(j\omega) = \frac{R}{R + \frac{1}{j\omega C}} = RC  \frac{j\omega}{1 + RC j\omega} = \frac{\tau_0 j\omega}{1 + \tau_0 j\omega}.
 \end{equation}
 и
 \begin{equation} \label{eq:th:10}
-	K(j\omega) = \frac{\frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} = \frac{1}{1 + j\omega CR} = \frac{1}{1 + \tau_0 j\omega}.
+	\dot{K}(j\omega) = \frac{\frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} = \frac{1}{1 + j\omega CR} = \frac{1}{1 + \tau_0 j\omega}.
 \end{equation}
 соответственно.
 
